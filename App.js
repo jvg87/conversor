@@ -1,11 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import PickerCoin from './src/components/Picker';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.contentCoin}>
+        <Text style={styles.title}>Selecione sua Moeda</Text>
+        <PickerCoin/>
+      </View>
     </View>
   );
 }
@@ -13,8 +15,22 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#101215',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 40
   },
+  contentCoin: {
+    width:'90%',
+    backgroundColor:'#f9f9f9',
+    paddingTop: 9,
+    borderTopRightRadius: 9,
+    borderTopLeftRadius: 9,
+    marginBottom: 1
+  },
+  title: {
+    fontSize: 15,
+    color: '#121212',
+    paddingTop: 5,
+    paddingLeft: 5
+  }
 });
