@@ -1,33 +1,27 @@
 import {Picker} from '@react-native-picker/picker';
-import { useState } from 'react';
 
-export default function PickerCoin() {
+export default function PickerCoin({coins, selectedValue, onChange}) {
 
-  const [ selectedCoin, setSelectedCoin ] = useState();
 
   return (
     <Picker
-      selectedValue={selectedCoin}
-      onValueChange={(itemValue, itemIndex) => setSelectedCoin(itemValue)}
+      selectedValue={selectedValue}
+      onValueChange={(itemValue, itemIndex) => onChange(itemValue)}
       style={{fontSize:20, color:'#121212'}}
     >
       <Picker.Item
         enabled={true}
         style={{color:'gray'}}
-        key='1'
         label='Selecione uma moeda..'
-        value='USD'
+        value={null}
       />
-      <Picker.Item
-        key='2'
-        label='USD'
-        value='USD'
-      />
-      <Picker.Item
-        key='3'
-        label='EUR'
-        value='EUR'
-      />
+      {coins.map((coin) => (
+        <Picker.Item
+          key={coin.key}
+          label={coin.label}
+          value={coin.value}
+        />
+      ))}
     </Picker>
   )
 }
