@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Keyboard } from 'react-native';
 import PickerCoin from './src/components/Picker';
 
 import api from './src/services/api';
@@ -47,8 +47,11 @@ export default function App() {
     const response = await api.get(`all/${coinSelected}-BRL`)
     
     let result = (response.data[coinSelected].ask * parseFloat(valueCoin))
-    setConversionCoin(`R$ ${result}`);
+    setConversionCoin(`R$ ${result.toFixed(2)}`);
     setInputCoin(valueCoin);
+
+    Keyboard.dismiss();
+
   }
   
 
